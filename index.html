@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deteksi Penyakit Tanaman - Kesehatan Tanaman di Ujung Jari Anda</title>
+    
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Hero Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Deteksi Penyakit Tanaman Anda</h1>
+                <p>Kesehatan tanaman di ujung jari Anda - diagnosis cepat dan akurat untuk tanaman yang lebih sehat</p>
+                <a href="#app" class="cta-button">Mulai Deteksi</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih Sistem Kami?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🌿</span>
+                    <h3>Ramah Lingkungan</h3>
+                    <p>Mendukung pertanian berkelanjutan dengan mengurangi penggunaan pestisida berlebihan</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Cepat & Akurat</h3>
+                    <p>Diagnosis dalam hitungan detik dengan akurasi tinggi menggunakan teknologi AI terbaru</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💡</span>
+                    <h3>Solusi Terpadu</h3>
+                    <p>Tak hanya diagnosis, kami berikan rekomendasi perawatan yang tepat untuk tanaman Anda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Cara Kerja Sistem</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Unggah Foto</h3>
+                    <p>Ambil atau unggah foto daun tanaman yang ingin diperiksa</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Analisis AI</h3>
+                    <p>Sistem AI kami menganalisis gambar untuk mendeteksi penyakit</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Dapatkan Hasil</h3>
+                    <p>Terima diagnosis lengkap dengan rekomendasi perawatan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main App Section -->
+    <section class="app-section" id="app">
+        <div class="container">
+            <h2 class="section-title">Deteksi Penyakit Tanaman</h2>
+            <div class="app-container">
+                <!-- Model Status -->
+                <div class="model-status" id="modelStatus">
+                    ⏳ Memuat model AI...
+                </div>
+
+                <!-- Upload Section -->
+                <div class="upload-section">
+                    <div class="upload-box" id="uploadBox">
+                        <div class="upload-icon">📸</div>
+                        <h3>Klik atau drag & drop gambar daun tanaman</h3>
+                        <p class="upload-info">Format: JPG, PNG (Maks 5MB)</p>
+                        <input type="file" id="fileInput" accept="image/*">
+                        <button class="btn" onclick="document.getElementById('fileInput').click()">
+                            Pilih Gambar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="preview-section" id="previewSection">
+                    <h3 class="preview-title">Preview Gambar:</h3>
+                    <img id="imagePreview" class="image-preview" alt="Preview">
+                    <div class="preview-actions">
+                        <button class="btn" id="analyzeBtn" onclick="analyzeImage()">
+                            🔍 Analisa Penyakit
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Menganalisa gambar dengan AI...</p>
+                </div>
+
+                <!-- Result Section -->
+                <div class="result-section" id="resultSection">
+                    <h2 class="result-title">📊 Hasil Diagnosa</h2>
+                    <div id="diagnosisResult"></div>
+                    <button class="btn reset-btn" onclick="resetApp()">
+                        🔄 Analisa Gambar Lain
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">🌱 PlantCare</div>
+                <p class="footer-tagline">Menjaga kesehatan tanaman untuk masa depan yang lebih hijau</p>
+                
+                <div class="footer-links">
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Cara Kerja</a>
+                    <a href="#">Galeri Penyakit</a>
+                    <a href="#">Kontak</a>
+                    <a href="#">Kebijakan Privasi</a>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">📺</a>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2023 PlantCare. Semua hak dilindungi.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
