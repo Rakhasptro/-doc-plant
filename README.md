@@ -26,6 +26,31 @@ A web-based AI-powered application for detecting plant diseases from leaf images
 
 No additional installation or server setup required - it's a client-side application!
 
+## Model Training
+
+The AI model used in this application was trained using the provided Python script on Google Colab. To train your own model:
+
+### Prerequisites
+- Google Colab account
+- Kaggle API key (`kaggle.json`)
+
+### Training Steps
+1. Upload `training-model/main.py` to Google Colab
+2. Upload your `kaggle.json` file when prompted by the script
+3. Run all cells in the notebook
+4. The script will:
+   - Download the plant disease dataset from Kaggle
+   - Preprocess the data
+   - Train a MobileNetV2-based CNN model
+   - Convert the trained model to TensorFlow.js format
+   - Download the converted model files
+
+### Files Required for Training
+- `training-model/main.py` - Main training script
+- `kaggle.json` - Kaggle API credentials for dataset download
+
+**Note**: The Python training code is designed to run on Google Colab for optimal performance and GPU acceleration.
+
 ## Usage
 
 1. **Launch the Application**: Open `index.html` in your web browser
@@ -79,6 +104,8 @@ plant-disease-detection/
 │   ├── group1-shard1of3.bin
 │   ├── group1-shard2of3.bin
 │   └── group1-shard3of3.bin
+├── training-model/
+│   └── main.py         # Python training script for Google Colab
 └── README.md           # This file
 ```
 
